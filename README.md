@@ -30,11 +30,11 @@ other advantages of the jump box include:(a) Acting as a  central hub to connect
 										 (b) Enables connection between the local host and the virtual network 
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the Usage  and system logs.
-- _TODO: What does Filebeat watch for?_
+
 A filebeat is used for forwarding and centralizing log data. It is installed as an agent on the servers, filebeat monitors the log files or locations specified by the user, collects log events and forwards them to
 either elasticsearch or logstash for indexing. 
 
-- _TODO: What does Metricbeat record?_
+
 A metricbeat is an application installed on our servers that periodically collects metrics from the operating system and  from services running on the server.
 Metricbeat takes the metrics and statistics that it collects and ships them to output such as elasticsearch or logstash.
 The configuration details of each machine may be found below.
@@ -76,47 +76,75 @@ Ansible playbooks were leveraged in this project to ensure consistent installati
 
 The playbook implements the following tasks:
 (1) Installs Docker service
+
 (2) Installs Python
+
 (3) Installs Docker Module
+
 (4) Increases the VMs virtual memory
+
 (5) Configures the BM to use it's increased memory
+
 (6) Downloads an image of an ELK container and launches it
+
 (7) Ensures that docker is started on boot 
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
 !C:\Users\Home\Downloads\readme virtual image2.jpg
+
 ### Target Machines & Beats
+
 This ELK server is configured to monitor the following machines:
+
 (i) 10.0.0.5
+
 (ii)10.0.0.6
 
 We have installed the following Beats on these machines:
+
 (i) Firebeat
+
 (ii) Metricbeat
 
 These Beats allow us to collect the following information from each machine:
+
 (i) Filebeat collects system logs, service logs, authentication logs and also tracks sudo commands.
+
 (ii) Metricbeat collects statistics and metrics of the system.
+
 ### Using the Playbook
-	In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
+
+In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned 
 
 SSH into the control node and follow the steps below:
-(i) Navigate to the /etc/ansible directory with:
+(i) Navigate to the /etc/ansible directory with
 	cd /etc/ansible
+    
 (ii) Create role directory to contain metricbeat and filebeat playbooks.
 	mkdir roles
+    
 (iii) Update the hosts file to include the elk and webserver address.
-	[webservers]
+	
+    [webservers]
+    
 	10.0.0.5 ansible_python_interpreter=/usr/bin/python3
 	10.0.0.6 ansible_python_interpreter=/usr/bin/python3
-	[elk]
+	
+    [elk]
+    
 	10.1.0.4 ansible_python_interpreter=/usr/bin/python3
+    
 (iv) Copy the Filebeat-config and Metricbeat-config to the /etc/ansible directory.
+
 (v) Copy the Filebeat-Playbook and Metricbeat-Playbook into the /etc/ansible/roles directory.
+
 (vi) From with in the /etc/ansible/roles directory run each playbook with
+
 	ansible-playbook filebeat-playbook.yml
+    
 	ansible-playbook metricbeat-playbook.yml
+    
 (vii) Nagivate to http://[your.VM.IP]:5601/app/kibana.Use the public IP address of the ELK server to verify installation procedure
 
 ### Verifcation of the ELK stack installation through analyzing kibana logs
