@@ -26,8 +26,9 @@ Essentially, if one of the servers were to go down, then the load balancer direc
 The load balancer comprises both front and back end connections.It has a public IP address which is shared by the two DVWA web servers 
 In the current network design the DVWA servers are connected to the jump box through SSH protocol established betweeen the ansible docker container in the jump box and the webservers.
 Therefore, the jump box mediates connection to the DVW web servers. 
-other advantages of the jump box include:(a) Acting as a  central hub to connect to other potential virtual machines that could be added to the network when required. 
-										 (b) Enables connection between the local host and the virtual network 
+other advantages of the jump box include:(a) Acting as a  central hub to connect to other potential virtual machines that could be added to the network when required.
+
+					 (b) Enables connection between the local host and the virtual network 
 
 Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the Usage  and system logs.
 
@@ -75,6 +76,7 @@ OS-level virtualization in the form of "containers" to implement software, ansib
 Ansible playbooks were leveraged in this project to ensure consistent installation of the ELK machine, the D*mn vulnerable web application machine, and the metricbeat and filebeat data collection software.
 
 The playbook implements the following tasks:
+
 (1) Installs Docker service
 
 (2) Installs Python
