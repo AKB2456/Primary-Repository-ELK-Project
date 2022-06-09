@@ -155,4 +155,7 @@ To verfiy that the ELK stack is receiving filebeat and metricbeat logs from DVWA
 The following figures display the traffic that is captured by the filebeat logs installed in the machines thus validating the installation procedure. In addition, the figures provide an inkling
 on how to interpret SSH logins and identify critical parameters describing the traffic. 
 
+![filebeat-logs3](https://user-images.githubusercontent.com/66979236/172745167-31f1487d-5fc0-4408-8a63-193317b98261.JPG)
+![filebeat-logs2](https://user-images.githubusercontent.com/66979236/172745206-85486fa2-5553-4cc8-a559-b6106cddd51c.JPG)
+![filebeat-logs](https://user-images.githubusercontent.com/66979236/172745237-02ef7d00-278b-4d86-9fc0-930c840bbace.JPG)
 
